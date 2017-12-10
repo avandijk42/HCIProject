@@ -13,6 +13,7 @@
 		785FC5741FCF668000C44C31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785FC5731FCF668000C44C31 /* Assets.xcassets */; };
 		785FC5771FCF668000C44C31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 785FC5751FCF668000C44C31 /* LaunchScreen.storyboard */; };
 		785FC5821FCF668000C44C31 /* HCIProject4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785FC5811FCF668000C44C31 /* HCIProject4Tests.swift */; };
+		78876AF71FD6078C009C0764 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78876AF61FD6078C009C0764 /* CardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		785FC57D1FCF668000C44C31 /* HCIProject4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HCIProject4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		785FC5811FCF668000C44C31 /* HCIProject4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HCIProject4Tests.swift; sourceTree = "<group>"; };
 		785FC5831FCF668000C44C31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78876AF61FD6078C009C0764 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				785FC5731FCF668000C44C31 /* Assets.xcassets */,
 				785FC5751FCF668000C44C31 /* LaunchScreen.storyboard */,
 				785FC5781FCF668000C44C31 /* Info.plist */,
+				78876AF61FD6078C009C0764 /* CardViewController.swift */,
 			);
 			path = HCIProject4;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				785FC56F1FCF668000C44C31 /* ViewController.swift in Sources */,
+				78876AF71FD6078C009C0764 /* CardViewController.swift in Sources */,
 				785FC56D1FCF668000C44C31 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,6 +414,7 @@
 				785FC5881FCF668000C44C31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		785FC5891FCF668000C44C31 /* Build configuration list for PBXNativeTarget "HCIProject4Tests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +423,7 @@
 				785FC58B1FCF668000C44C31 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
