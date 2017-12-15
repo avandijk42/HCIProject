@@ -16,24 +16,55 @@ class ViewController: UIViewController {
     @IBOutlet weak var menuView: UIView!
     var isMenuOpen = false;
     
+    var currentViewController: UIViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         menuView.layer.shadowOpacity = 1
+        loadHome()
+    }
+    
+    func loadHome() {
+        let homeViewController = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController")
+        
+        self.addChildViewController(homeViewController)
+        homeViewController.view.frame = mainView.bounds
+        mainView.addSubview(homeViewController.view)
+        homeViewController.didMove(toParentViewController: self)
+        
+        currentViewController = homeViewController
+    }
+    
+    func removePreviousVC() {
+        currentViewController.willMove(toParentViewController: nil)
+        currentViewController.view.removeFromSuperview()
+        currentViewController.removeFromParentViewController()
     }
     
     @IBAction func presentHome(_ sender: Any) {
-        let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController")
-        
-        self.present(homeViewController!, animated: true, completion: nil)
+        removePreviousVC()
+        loadHome()
+        openCloseMenu()
     }
     
     @IBAction func presentWishList(_ sender: Any) {
-        let wishListViewController = self.storyboard?.instantiateViewController(withIdentifier: "WishListViewController")
+        removePreviousVC()
         
-        self.present(wishListViewController!, animated: true, completion: nil)
+        let wishListViewController = self.storyboard!.instantiateViewController(withIdentifier: "WishListViewController")
+        
+        self.addChildViewController(wishListViewController)
+        wishListViewController.view.frame = mainView.bounds
+        mainView.addSubview(wishListViewController.view)
+        wishListViewController.didMove(toParentViewController: self)
+        
+        currentViewController = wishListViewController
+        
+        openCloseMenu()
     }
     
-    @IBAction func openMenu(_ sender: Any) {
+    
+    
+    func openCloseMenu() {
         if (isMenuOpen) {
             leadingConstraint.constant = -250
         } else {
@@ -47,12 +78,8 @@ class ViewController: UIViewController {
         isMenuOpen = !isMenuOpen
     }
     
-    
-    
-    
-    
-    
-    
-    
+    @IBAction func openMenu(_ sender: Any) {
+        openCloseMenu()
+    }
 }
 
