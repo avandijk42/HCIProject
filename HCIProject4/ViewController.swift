@@ -62,6 +62,44 @@ class ViewController: UIViewController {
         openCloseMenu()
     }
     
+    @IBAction func presentStatistics(_ sender: Any) {
+        removePreviousVC()
+        
+        /*
+         
+        let statisticsViewController = self.storyboard!.instantiateViewController(withIdentifier: "StatisticsViewController")
+        
+        self.addChildViewController(statisticsViewController)
+        statisticsViewController = mainView.bounds
+        mainView.addSubview(statisticsViewController)
+        statisticsViewController(toParentViewController: self)
+        
+        currentViewController = statisticsViewController
+ 
+        */
+        
+        openCloseMenu()
+    }
+    
+    @IBAction func presentImport(_ sender: Any) {
+        removePreviousVC()
+        
+        /*
+         
+         let importViewController = self.storyboard!.instantiateViewController(withIdentifier: "ImportViewController")
+         
+         self.addChildViewController(importViewController)
+         importViewController = mainView.bounds
+         mainView.addSubview(statisticsViewController)
+         importViewController(toParentViewController: self)
+         
+         currentViewController = importViewController
+         
+         */
+        
+        openCloseMenu()
+    }
+    
     
     
     func openCloseMenu() {
