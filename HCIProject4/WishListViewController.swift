@@ -23,6 +23,7 @@ class WishListViewController: UIViewController {
     @IBOutlet weak var thirdPlatform: UIImageView!
     @IBOutlet weak var thirdDate: UILabel!
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var overwatch: UIView!
     
     @IBOutlet weak var filterOffset: NSLayoutConstraint!
     
@@ -49,9 +50,50 @@ class WishListViewController: UIViewController {
     var platforms = ["xbox_icon", "steam_icon", "playstation_icon"]
     var dates = ["2006", "2004", "2016"]
     
+    var canSwipeLeft = true
+    var canSwipeRight = false
+    var trash: UIButton? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftOnOverwatch))
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightOnOverwatch))
+        swipeLeft.direction = .left
+        swipeRight.direction = .right
+        overwatch.addGestureRecognizer(swipeLeft)
+        overwatch.addGestureRecognizer(swipeRight)
         initializeArrows()
+    }
+    
+    func swipeLeftOnOverwatch(){
+        let frame = overwatch.frame
+        if canSwipeLeft{
+            overwatch.frame = CGRect(x: frame.origin.x - frame.height, y: frame.origin.y, width: frame.width, height: frame.height)
+            canSwipeLeft = false
+            canSwipeRight = true
+            trash = UIButton(frame: CGRect(x:frame.origin.x + frame.width - frame.height,
+                                               y: frame.origin.y,
+                                               width: frame.height,
+                                               height: frame.height))
+            trash?.addTarget(self, action: #selector(hideOverwatch), for: .touchDown)
+            trash!.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
+            self.view.addSubview(trash!)
+        }
+    }
+    
+    func swipeRightOnOverwatch(){
+        let frame = overwatch.frame
+        if canSwipeRight{
+            overwatch.frame = CGRect(x: frame.origin.x + frame.height, y: frame.origin.y, width: frame.width, height: frame.height)
+            canSwipeLeft = true
+            canSwipeRight = false
+            trash!.isHidden = true
+        }
+    }
+    
+    func hideOverwatch(){
+        self.overwatch.isHidden = true
+        trash?.isHidden = true
     }
     
     func initializeArrows() {

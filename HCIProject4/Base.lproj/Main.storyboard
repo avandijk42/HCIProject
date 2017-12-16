@@ -548,6 +548,7 @@
                         <outlet property="nameArrow" destination="BaI-jJ-wn2" id="96f-LQ-K1u"/>
                         <outlet property="nameButton" destination="wer-1B-qDT" id="ZGS-A3-MUV"/>
                         <outlet property="nameLabel" destination="KHs-bx-XHA" id="mOF-Ok-wPf"/>
+                        <outlet property="overwatch" destination="vXy-We-qZu" id="kaA-MA-TmW"/>
                         <outlet property="platformArrow" destination="jxA-G0-Yt5" id="ZF3-er-sPs"/>
                         <outlet property="platformButton" destination="LSk-8e-RhQ" id="Rd7-q1-zdN"/>
                         <outlet property="platformLabel" destination="JY6-lw-Gl6" id="AuP-PR-jyt"/>
