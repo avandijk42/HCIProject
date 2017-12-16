@@ -83,19 +83,15 @@ class ViewController: UIViewController {
     
     @IBAction func presentImport(_ sender: Any) {
         removePreviousVC()
-        
-        /*
          
          let importViewController = self.storyboard!.instantiateViewController(withIdentifier: "ImportViewController")
          
          self.addChildViewController(importViewController)
-         importViewController = mainView.bounds
-         mainView.addSubview(statisticsViewController)
-         importViewController(toParentViewController: self)
+         importViewController.view.frame = mainView.bounds
+         mainView.addSubview(importViewController.view)
+         importViewController.didMove(toParentViewController: self)
          
          currentViewController = importViewController
-         
-         */
         
         openCloseMenu()
     }
