@@ -87,8 +87,9 @@ class ViewController: UIViewController {
     
     @IBAction func presentImport(_ sender: Any) {
         removePreviousVC()
-         
-         let importViewController = self.storyboard!.instantiateViewController(withIdentifier: "ImportViewController")
+        
+        
+         let importViewController = UIStoryboard(name: "Import", bundle: nil).instantiateViewController(withIdentifier: "something")
          
          self.addChildViewController(importViewController)
          importViewController.view.frame = mainView.bounds

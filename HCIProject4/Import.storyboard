@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="weF-Z6-Ylk">
-                                <rect key="frame" x="8" y="124" width="359" height="154"/>
+                                <rect key="frame" x="8" y="80" width="359" height="154"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xbox_icon" translatesAutoresizingMaskIntoConstraints="NO" id="bzO-Gq-WFN">
                                         <rect key="frame" x="8" y="8" width="67" height="67"/>
@@ -106,7 +106,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWt-nk-bm0">
-                                <rect key="frame" x="8" y="286" width="359" height="154"/>
+                                <rect key="frame" x="8" y="242" width="359" height="154"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playstation_icon" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-aq-Eo3">
                                         <rect key="frame" x="8" y="8" width="67" height="67"/>
@@ -190,17 +190,8 @@
                                     <constraint firstItem="S4J-aq-Eo3" firstAttribute="leading" secondItem="RWt-nk-bm0" secondAttribute="leading" constant="8" id="ufi-Gu-hbA"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="toa-nv-h2U">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Qiz-gn-iuj"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Import" id="DnM-h5-9U4"/>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log into the following platforms to import your data" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVG-3F-DjL">
-                                <rect key="frame" x="0.0" y="64" width="375" height="52"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="GWa-GB-2aa"/>
                                 </constraints>
@@ -209,7 +200,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLb-kE-7sH">
-                                <rect key="frame" x="8" y="448" width="359" height="154"/>
+                                <rect key="frame" x="8" y="404" width="359" height="154"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozt-So-IjS">
                                         <rect key="frame" x="83" y="8" width="268" height="29"/>
@@ -321,21 +312,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pVG-3F-DjL" firstAttribute="top" secondItem="toa-nv-h2U" secondAttribute="bottom" id="0zj-rL-erj"/>
                             <constraint firstItem="weF-Z6-Ylk" firstAttribute="top" secondItem="pVG-3F-DjL" secondAttribute="bottom" constant="8" id="2GC-Jy-mRQ"/>
                             <constraint firstItem="pVG-3F-DjL" firstAttribute="leading" secondItem="T8O-XJ-eoV" secondAttribute="leading" id="Czg-du-PeT"/>
-                            <constraint firstItem="toa-nv-h2U" firstAttribute="leading" secondItem="T8O-XJ-eoV" secondAttribute="leading" id="GV0-FE-PIL"/>
                             <constraint firstAttribute="trailing" secondItem="RWt-nk-bm0" secondAttribute="trailing" constant="8" id="Hjz-LK-0Ig"/>
                             <constraint firstItem="RWt-nk-bm0" firstAttribute="leading" secondItem="T8O-XJ-eoV" secondAttribute="leading" constant="8" id="HzH-cF-2Vi"/>
                             <constraint firstItem="weF-Z6-Ylk" firstAttribute="leading" secondItem="T8O-XJ-eoV" secondAttribute="leading" constant="8" id="N1t-xO-nU1"/>
                             <constraint firstAttribute="trailing" secondItem="JLb-kE-7sH" secondAttribute="trailing" constant="8" id="QsG-w3-6MA"/>
                             <constraint firstAttribute="trailing" secondItem="pVG-3F-DjL" secondAttribute="trailing" id="RPw-dH-xro"/>
+                            <constraint firstItem="pVG-3F-DjL" firstAttribute="top" secondItem="6Rh-CY-Hw4" secondAttribute="bottom" id="W3Q-qc-cMN"/>
                             <constraint firstItem="JLb-kE-7sH" firstAttribute="top" secondItem="RWt-nk-bm0" secondAttribute="bottom" constant="8" id="df7-vx-b6V"/>
                             <constraint firstAttribute="trailing" secondItem="weF-Z6-Ylk" secondAttribute="trailing" constant="8" id="gaG-s1-TwZ"/>
-                            <constraint firstItem="toa-nv-h2U" firstAttribute="top" secondItem="6Rh-CY-Hw4" secondAttribute="bottom" id="pUV-BD-KqM"/>
                             <constraint firstItem="RWt-nk-bm0" firstAttribute="top" secondItem="weF-Z6-Ylk" secondAttribute="bottom" constant="8" id="poN-Do-4gF"/>
                             <constraint firstItem="JLb-kE-7sH" firstAttribute="leading" secondItem="T8O-XJ-eoV" secondAttribute="leading" constant="8" id="xwk-ZI-eke"/>
-                            <constraint firstAttribute="trailing" secondItem="toa-nv-h2U" secondAttribute="trailing" id="ycg-3y-GnD"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
