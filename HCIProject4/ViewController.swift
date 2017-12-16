@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var Navbar: UINavigationItem!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainView: UIView!
     
@@ -44,6 +45,7 @@ class ViewController: UIViewController {
     @IBAction func presentHome(_ sender: Any) {
         removePreviousVC()
         loadHome()
+        Navbar.title = "Home"
         openCloseMenu()
     }
     
@@ -60,23 +62,25 @@ class ViewController: UIViewController {
         currentViewController = wishListViewController
         
         openCloseMenu()
+        
+        Navbar.title = "Wish List"
     }
     
     @IBAction func presentStatistics(_ sender: Any) {
         removePreviousVC()
         
-        /*
          
         let statisticsViewController = self.storyboard!.instantiateViewController(withIdentifier: "StatisticsViewController")
         
         self.addChildViewController(statisticsViewController)
-        statisticsViewController = mainView.bounds
-        mainView.addSubview(statisticsViewController)
-        statisticsViewController(toParentViewController: self)
+        statisticsViewController.view.frame = mainView.bounds
+        mainView.addSubview(statisticsViewController.view)
+        statisticsViewController.didMove(toParentViewController: self)
         
         currentViewController = statisticsViewController
  
-        */
+        
+        Navbar.title = "Statistics"
         
         openCloseMenu()
     }
@@ -92,6 +96,8 @@ class ViewController: UIViewController {
          importViewController.didMove(toParentViewController: self)
          
          currentViewController = importViewController
+        
+        Navbar.title = "Import"
         
         openCloseMenu()
     }

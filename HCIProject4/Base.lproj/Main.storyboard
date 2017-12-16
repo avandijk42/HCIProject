@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0T5-Wo-uHU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0T5-Wo-uHU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -182,11 +182,17 @@
                                         <rect key="frame" x="80" y="165" width="71" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Statistics"/>
+                                        <connections>
+                                            <action selector="presentStatistics:" destination="XjO-y5-1Nd" eventType="touchUpInside" id="Qo1-jU-WGZ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iH-Kl-UAQ">
                                         <rect key="frame" x="80" y="229" width="71" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Import"/>
+                                        <connections>
+                                            <action selector="presentImport:" destination="XjO-y5-1Nd" eventType="touchUpInside" id="zCD-27-Nqt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96495451720000003" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -230,6 +236,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="Navbar" destination="INs-SZ-EXr" id="FDh-dW-TVq"/>
                         <outlet property="leadingConstraint" destination="tBr-EH-HKk" id="vpd-b8-BAS"/>
                         <outlet property="mainView" destination="pt2-Pd-7Jg" id="Ja6-vs-yV3"/>
                         <outlet property="menuView" destination="8w4-GC-Gbo" id="vmM-vM-eIx"/>
@@ -258,22 +265,22 @@
                                         <rect key="frame" x="-16" y="0.0" width="375" height="639"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRZ-Lf-68P">
-                                                <rect key="frame" x="8" y="65" width="359" height="105"/>
+                                                <rect key="frame" x="8" y="77" width="359" height="93"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overwatch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnu-qh-txy">
-                                                        <rect key="frame" x="89" y="8" width="196" height="52"/>
+                                                        <rect key="frame" x="89" y="8" width="196" height="40"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playstation_icon" translatesAutoresizingMaskIntoConstraints="NO" id="OcA-gA-yh6">
-                                                        <rect key="frame" x="293" y="16" width="48" height="60"/>
+                                                        <rect key="frame" x="293" y="16" width="48" height="48"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="48" id="Qx6-q8-7Aa"/>
                                                         </constraints>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overwatch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Bds-rU-iZT">
-                                                        <rect key="frame" x="16" y="8" width="65" height="77"/>
+                                                        <rect key="frame" x="16" y="8" width="65" height="65"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="65" id="IBx-fG-jFa"/>
                                                         </constraints>
@@ -387,7 +394,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDd-Ug-SFr">
-                                                <rect key="frame" x="314" y="9" width="39" height="26"/>
+                                                <rect key="frame" x="314" y="9" width="39" height="38"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="39" id="nfj-uC-V7j"/>
                                                 </constraints>
@@ -397,7 +404,7 @@
                                                 </connections>
                                             </button>
                                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="61O-tJ-eVc">
-                                                <rect key="frame" x="17" y="0.0" width="297" height="44"/>
+                                                <rect key="frame" x="17" y="0.0" width="297" height="56"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
                                         </subviews>
@@ -685,10 +692,10 @@
             </objects>
             <point key="canvasLocation" x="-1644" y="349"/>
         </scene>
-        <!--View Controller-->
+        <!--Statistics View Controller-->
         <scene sceneID="Rlw-2U-R5P">
             <objects>
-                <viewController id="R7Q-BU-NIz" customClass="ViewController" customModule="HCIProject4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StatisticsViewController" id="R7Q-BU-NIz" customClass="StatisticsViewController" customModule="HCIProject4" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qfe-3f-bEB"/>
                         <viewControllerLayoutGuide type="bottom" id="Vdb-Vn-hSy"/>
@@ -833,7 +840,7 @@
         <!--Import View Controller-->
         <scene sceneID="Kr8-Yf-FAA">
             <objects>
-                <viewController storyboardIdentifier="something" id="S47-Q7-ZLG" customClass="ImportViewController" customModule="HCIProject4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImportViewController" id="S47-Q7-ZLG" customClass="ImportViewController" customModule="HCIProject4" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rv0-bZ-inq"/>
                         <viewControllerLayoutGuide type="bottom" id="XLF-DN-ZGN"/>
