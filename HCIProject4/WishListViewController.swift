@@ -38,6 +38,10 @@ class WishListViewController: UIViewController {
     @IBOutlet weak var platformButton: UIButton!
     @IBOutlet weak var dismissButton: UIButton!
     
+    @IBOutlet weak var firstView: UIView!
+    @IBOutlet weak var secondView: UIView!
+    
+    
     // 0 == not selected, 1 == ascending, 2 == descending
     var sortByName = 0
     var sortByDate = 0
@@ -49,6 +53,7 @@ class WishListViewController: UIViewController {
     var gameLogos = ["gears_of_war_logo", "half_life_logo", "overwatch_icon"]
     var platforms = ["xbox_icon", "steam_icon", "playstation_icon"]
     var dates = ["2006", "2004", "2016"]
+    var locations: [CGRect] = []
     
     var canSwipeLeft = true
     var canSwipeRight = false
@@ -56,13 +61,18 @@ class WishListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeSwipes()
+//        initializeArrows()
+        locations = [overwatch.frame, secondView.frame, firstView.frame]
+    }
+    
+    func initializeSwipes(){
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftOnOverwatch))
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightOnOverwatch))
         swipeLeft.direction = .left
         swipeRight.direction = .right
         overwatch.addGestureRecognizer(swipeLeft)
         overwatch.addGestureRecognizer(swipeRight)
-        initializeArrows()
     }
     
     func swipeLeftOnOverwatch(){
@@ -188,20 +198,25 @@ class WishListViewController: UIViewController {
     }
     
     func sortHelper(_ i: Int, _ j: Int, _ k: Int) {
-        firstLabel.text = gameNames[i]
-        firstLogo.image = UIImage(named: gameLogos[i])
-        firstPlatform.image = UIImage(named: platforms[i])
-        firstDate.text = dates[i]
+//        firstLabel.text = gameNames[i]
+//        firstLogo.image = UIImage(named: gameLogos[i])
+//        firstPlatform.image = UIImage(named: platforms[i])
+//        firstDate.text = dates[i]
+        firstView.frame = locations[i]
         
-        secondLabel.text = gameNames[j]
-        secondLogo.image = UIImage(named: gameLogos[j])
-        secondPlatform.image = UIImage(named: platforms[j])
-        secondDate.text = dates[j]
+//        secondLabel.text = gameNames[j]
+//        secondLogo.image = UIImage(named: gameLogos[j])
+//        secondPlatform.image = UIImage(named: platforms[j])
+//        secondDate.text = dates[j]
         
-        thirdLabel.text = gameNames[k]
-        thirdLogo.image = UIImage(named: gameLogos[k])
-        thirdPlatform.image = UIImage(named: platforms[k])
-        thirdDate.text = dates[k]
+        secondView.frame = locations[j]
+        
+//        thirdLabel.text = gameNames[k]
+//        thirdLogo.image = UIImage(named: gameLogos[k])
+//        thirdPlatform.image = UIImage(named: platforms[k])
+//        thirdDate.text = dates[k]
+        
+        overwatch.frame = locations[k]
     }
 
 }
