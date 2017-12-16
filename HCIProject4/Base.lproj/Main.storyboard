@@ -232,7 +232,11 @@
                                 <action selector="x:" destination="XjO-y5-1Nd" id="MNR-RS-ids"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="BLb-x6-DOz"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="BLb-x6-DOz">
+                            <connections>
+                                <action selector="searchPressed:" destination="XjO-y5-1Nd" id="Hbr-lp-caV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -403,7 +407,7 @@
                                                     <action selector="filterButtonPressed:" destination="wlG-8h-Ewr" eventType="touchUpInside" id="aDL-Ww-FKA"/>
                                                 </connections>
                                             </button>
-                                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="61O-tJ-eVc">
+                                            <searchBar tag="1234" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="61O-tJ-eVc">
                                                 <rect key="frame" x="17" y="0.0" width="297" height="44"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>

@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var isMenuOpen = false;
     
     var currentViewController: UIViewController!
+    var inWishList = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,12 @@ class ViewController: UIViewController {
         openCloseMenu()
     }
     
+    @IBAction func searchPressed(_ sender: Any) {
+        if inWishList{
+            self.currentViewController.view.viewWithTag(1234)?.becomeFirstResponder()
+        }
+    }
+    
     @IBAction func presentWishList(_ sender: Any) {
         removePreviousVC()
         
@@ -64,6 +71,7 @@ class ViewController: UIViewController {
         openCloseMenu()
         
         Navbar.title = "Wish List"
+        inWishList = true
     }
     
     @IBAction func presentStatistics(_ sender: Any) {
