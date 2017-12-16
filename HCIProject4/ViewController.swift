@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var chart: UIImageView!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainView: UIView!
     
@@ -65,19 +66,15 @@ class ViewController: UIViewController {
     @IBAction func presentStatistics(_ sender: Any) {
         removePreviousVC()
         
-        /*
-         
         let statisticsViewController = self.storyboard!.instantiateViewController(withIdentifier: "StatisticsViewController")
         
         self.addChildViewController(statisticsViewController)
-        statisticsViewController = mainView.bounds
-        mainView.addSubview(statisticsViewController)
-        statisticsViewController(toParentViewController: self)
+        statisticsViewController.view.frame = mainView.bounds
+        mainView.addSubview(statisticsViewController.view)
+        statisticsViewController.didMove(toParentViewController: self)
         
         currentViewController = statisticsViewController
- 
-        */
-        
+
         openCloseMenu()
     }
     
@@ -118,6 +115,22 @@ class ViewController: UIViewController {
     
     @IBAction func openMenu(_ sender: Any) {
         openCloseMenu()
+    }
+    
+    @IBAction func chart_convert(_ sender: UISegmentedControl) {
+        if(sender.selectedSegmentIndex == 0){
+            chart.image = #imageLiteral(resourceName: "pie_chart_allgames")
+        } else{
+            chart.image = #imageLiteral(resourceName: "line_chart_allgames")
+        }
+    }
+    
+    @IBAction func money_time_convert(_ sender: UISegmentedControl) {
+        if(sender.selectedSegmentIndex == 0) {
+            chart.image = #imageLiteral(resourceName: "pie_chart_console")
+        } else{
+            chart.image = #imageLiteral(resourceName: "line_chart_console")
+        }
     }
 }
 
