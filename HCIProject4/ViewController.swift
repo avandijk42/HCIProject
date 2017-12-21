@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var Navbar: UINavigationItem!
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainView: UIView!
     
     @IBOutlet weak var menuView: UIView!
@@ -116,8 +117,10 @@ class ViewController: UIViewController {
     func openCloseMenu() {
         if (isMenuOpen) {
             leadingConstraint.constant = -250
+            trailingConstraint.constant = -18
         } else {
             leadingConstraint.constant = 0;
+            trailingConstraint.constant = -250
         }
         
         UIView.animate(withDuration: 0.3, animations: {
