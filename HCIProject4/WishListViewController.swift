@@ -17,6 +17,7 @@ class WishListViewController: UIViewController{
     @IBOutlet weak var minecraftPC: UIView!
     @IBOutlet weak var minecraftXbox: UIView!
     
+    @IBOutlet weak var searchHolder: UIView!
     var cards: [UIView] = []
     var locations: [CGRect] = []
     var info: [(String, Int, String)] = []
@@ -29,15 +30,27 @@ class WishListViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cards = [overwatch, halflife, gears]
-        locations = cards.map{ (x:UIView) in x.frame }
+        cards = [overwatch, halflife, gears, minecraftPC]
+        defineLocations()
+        print(locations, "\n\n\n\n\n!@#$%^&*(")
         info = cards.map{ card in
             let data = card.accessibilityLabel
             let parts = data?.characters.split(separator: " ").map(String.init)
             return (parts![1], Int(parts![2])!, parts![3])
         }
+        cards.forEach{ card in
+            card.removeConstraints(self.view.constraints)
+        }
         initializeSwipes()
         roundedAndShadows()
+    }
+    
+    func defineLocations(){
+        let start = searchHolder.frame.origin
+        let gap = CGFloat(121)
+        for i in 0..<3{
+            locations.append(CGRect(origin: CGPoint(x: start.x, y: start.y+CGFloat(i)*gap), size: overwatch.frame.size))
+        }
     }
     
     func roundedAndShadows(){
@@ -136,22 +149,6 @@ class WishListViewController: UIViewController{
 //        cards.remove(at: cards.index(of: cardToDelete!)!)
         sender.removeFromSuperview()
 //        updateCards()
-    }
-    
-    func swipeLeftOnOverwatch(){
-        let frame = overwatch.frame
-        if canSwipeLeft{
-            overwatch.frame = CGRect(x: frame.origin.x - frame.height, y: frame.origin.y, width: frame.width, height: frame.height)
-            canSwipeLeft = false
-            canSwipeRight = true
-            trash = UIButton(frame: CGRect(x:frame.origin.x + frame.width - frame.height,
-                                               y: frame.origin.y,
-                                               width: frame.height,
-                                               height: frame.height))
-            trash?.addTarget(self, action: #selector(hideOverwatch), for: .touchDown)
-            trash!.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
-            self.view.addSubview(trash!)
-        }
     }
     
     func swipeRightOnOverwatch(){

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HCIProject4/WishListViewController.swift"
-            timestampString = "535570270.645858"
+            timestampString = "535578292.067982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "handleSwipe(gesture:)"
             landmarkType = "7">
          </BreakpointContent>
