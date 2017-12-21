@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let views = mainView.subviews
+        mainView.backgroundColor = UIColor(red: 232/255, green: 246/255, blue: 249/255, alpha: 1)
         for card in views{
             card.layer.cornerRadius = 5
             card.layer.masksToBounds = false
@@ -22,6 +23,7 @@ class HomeViewController: UIViewController {
             card.layer.shadowOffset = CGSize(width: -2, height: 3)
             card.layer.shadowRadius = 2;
             card.layer.shadowOpacity = 0.5
+            card.backgroundColor = UIColor(red: 205/255, green: 241/255, blue: 249/255, alpha: 1)
 
         }
         // Do any additional setup after loading the view.
