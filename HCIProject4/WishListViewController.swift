@@ -23,6 +23,7 @@ class WishListViewController: UIViewController{
     
     var canSwipeLeft = true
     var canSwipeRight = false
+    var cardToDelete: UIView? = nil
     var trash: UIButton? = nil
     open var arrowStates: [ArrowState] = [.off, .off, .off]
     
@@ -71,6 +72,25 @@ class WishListViewController: UIViewController{
         }
     }
     
+    func updateCards(){
+        locations = cards.map{ (x:UIView) in x.frame }
+        info = cards.map{ card in
+            let data = card.accessibilityLabel
+            let parts = data?.characters.split(separator: " ").map(String.init)
+            return (parts![1], Int(parts![2])!, parts![3])
+        }
+        if arrowStates == [.off, .off, .off]{
+            sort(by: 0, direction:"up")
+        } else {
+            for i in 0..<arrowStates.count{
+                if arrowStates[i] != .off{
+                    let d = arrowStates[i] == .up ? "up" : "down"
+                    sort(by: i, direction: d)
+                }
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "WishlistPopover") {
             let popover = (segue.destination as! ModalViewController)
@@ -91,60 +111,31 @@ class WishListViewController: UIViewController{
     }
     
     func handleSwipe(gesture: UISwipeGestureRecognizer){
-        print ("\n\n\nTDXCGJVKGCVJFCJGVJ\n\n\n")
         let card = (gesture.view)!
+        let frame = card.frame
+        self.view.layoutSubviews()
         for constraint in self.view.constraints{
             if (constraint.firstAttribute == .trailing || constraint.secondAttribute == .trailing) && constraint.secondItem as! NSObject == card{
                 constraint.constant = 100
+                
+                
+                trash = UIButton(frame: CGRect(x:frame.origin.x + frame.width - 80,
+                                               y: frame.origin.y + 20,
+                                               width: 60,
+                                               height: 60))
+                trash?.addTarget(self, action: #selector(WishListViewController.removeCard(sender:)), for: .touchDown)
+                trash!.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
+                cardToDelete = card
+                self.view.addSubview(trash!)
             }
         }
-        
-        
-//        if !locations.contains(frame){
-//            card.frame = CGRect(x: frame.origin.x - frame.height, y: frame.origin.y, width: frame.width, height: frame.height)
-//            trash = UIButton(frame: CGRect(x:frame.origin.x + frame.width - frame.height,
-//                                           y: frame.origin.y,
-//                                           width: frame.height,
-//                                           height: frame.height))
-//            trash?.addTarget(self, action: #selector(hideOverwatch), for: .touchDown)
-//            trash!.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
-//            self.view.addSubview(trash!)
-//        }
-        
     }
     
-    @objc func swipeLeft(on card:UIView){
-        let frame = card.frame
-        if !locations.contains(frame){
-            card.frame = CGRect(x: frame.origin.x - frame.height, y: frame.origin.y, width: frame.width, height: frame.height)
-            trash = UIButton(frame: CGRect(x:frame.origin.x + frame.width - frame.height,
-                                           y: frame.origin.y,
-                                           width: frame.height,
-                                           height: frame.height))
-            trash?.addTarget(self, action: #selector(hideOverwatch), for: .touchDown)
-            trash!.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
-            self.view.addSubview(trash!)
-        }
-    }
-    
-    @objc func swipeLeft(at index:Int){
-        let card = cards[index]
-        let frame = card.frame
-        if !locations.contains(frame){
-            card.frame = CGRect(x: frame.origin.x - frame.height, y: frame.origin.y, width: frame.width, height: frame.height)
-            trash = UIButton(frame: CGRect(x:frame.origin.x + frame.width - frame.height,
-                                           y: frame.origin.y,
-                                           width: frame.height,
-                                           height: frame.height))
-            trash?.addTarget(self, action: #selector(hideOverwatch), for: .touchDown)
-            trash!.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
-            self.view.addSubview(trash!)
-        }
-    }
-    
-    @objc func removeCard(_ card:UIView){
-        card.isHidden = true
-        cards.remove(at: cards.index(of: card)!)
+    func removeCard(sender: UIButton){
+        cardToDelete?.isHidden = true
+//        cards.remove(at: cards.index(of: cardToDelete!)!)
+        sender.removeFromSuperview()
+//        updateCards()
     }
     
     func swipeLeftOnOverwatch(){

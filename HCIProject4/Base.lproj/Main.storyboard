@@ -204,6 +204,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pt2-Pd-7Jg">
                                 <rect key="frame" x="-2" y="64" width="414" height="628"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="yDI-81-JQi"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -244,6 +247,7 @@
                         <outlet property="leadingConstraint" destination="tBr-EH-HKk" id="vpd-b8-BAS"/>
                         <outlet property="mainView" destination="pt2-Pd-7Jg" id="Ja6-vs-yV3"/>
                         <outlet property="menuView" destination="8w4-GC-Gbo" id="vmM-vM-eIx"/>
+                        <outlet property="trailingConstraint" destination="DyF-qh-nWi" id="Agn-Zd-Xl7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vz-mv-0Vo" userLabel="First Responder" sceneMemberID="firstResponder"/>

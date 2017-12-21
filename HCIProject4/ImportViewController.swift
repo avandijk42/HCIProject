@@ -20,6 +20,23 @@ class ImportViewController : UIViewController {
         xboxIcon.image = #imageLiteral(resourceName: "ps4")
     }
     
+    @IBOutlet weak var xboxCard: UIView!
+    @IBOutlet weak var ps4Card: UIView!
+    @IBOutlet weak var steamCard: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+//        self.cards.forEach{ card in
+//            card.layer.cornerRadius = 5
+//            card.layer.masksToBounds = false
+//            card.layer.shadowPath = UIBezierPath(rect: card.bounds).cgPath
+//            card.layer.shadowColor = UIColor.black.cgColor
+//            card.layer.shadowOffset = CGSize(width: -2, height: 3)
+//            card.layer.shadowRadius = 2;
+//            card.layer.shadowOpacity = 0.5
+//        }
+    }
+    
     @IBAction func syncPressed(_ sender: UIButton) {
         if (steamUsername.text != "" || steamPassword.text != ""){
             if sender.currentTitle == "SYNC"{
