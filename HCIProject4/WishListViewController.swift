@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WishListViewController: UIViewController, UISearchBarDelegate {
+class WishListViewController: UIViewController{
 
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var overwatch: UIView!
@@ -16,8 +16,6 @@ class WishListViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var gears: UIView!
     @IBOutlet weak var minecraftPC: UIView!
     @IBOutlet weak var minecraftXbox: UIView!
-    
-    @IBOutlet weak var searchBar: UISearchBar!
     
     var cards: [UIView] = []
     var locations: [CGRect] = []
@@ -30,14 +28,26 @@ class WishListViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeSwipes()
-        searchBar.delegate = self
         cards = [overwatch, halflife, gears]
         locations = cards.map{ (x:UIView) in x.frame }
         info = cards.map{ card in
             let data = card.accessibilityLabel
             let parts = data?.characters.split(separator: " ").map(String.init)
             return (parts![1], Int(parts![2])!, parts![3])
+        }
+        initializeSwipes()
+        roundedAndShadows()
+    }
+    
+    func roundedAndShadows(){
+        self.cards.forEach{ card in
+            card.layer.cornerRadius = 5
+            card.layer.masksToBounds = false
+            card.layer.shadowPath = UIBezierPath(rect: card.bounds).cgPath
+            card.layer.shadowColor = UIColor.black.cgColor
+            card.layer.shadowOffset = CGSize(width: -2, height: 3)
+            card.layer.shadowRadius = 2;
+            card.layer.shadowOpacity = 0.5
         }
     }
     
@@ -70,12 +80,71 @@ class WishListViewController: UIViewController, UISearchBarDelegate {
     }
     
     func initializeSwipes(){
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftOnOverwatch))
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightOnOverwatch))
-        swipeLeft.direction = .left
-        swipeRight.direction = .right
-        overwatch.addGestureRecognizer(swipeLeft)
-        overwatch.addGestureRecognizer(swipeRight)
+        for (_,card) in cards.enumerated(){
+            let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(WishListViewController.handleSwipe(gesture:)))
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightOnOverwatch))
+            swipeLeft.direction = .left
+            swipeRight.direction = .right
+            card.addGestureRecognizer(swipeLeft)
+            card.addGestureRecognizer(swipeRight)
+        }
+    }
+    
+    func handleSwipe(gesture: UISwipeGestureRecognizer){
+        print ("\n\n\nTDXCGJVKGCVJFCJGVJ\n\n\n")
+        let card = (gesture.view)!
+        for constraint in self.view.constraints{
+            if (constraint.firstAttribute == .trailing || constraint.secondAttribute == .trailing) && constraint.secondItem as! NSObject == card{
+                constraint.constant = 100
+            }
+        }
+        
+        
+//        if !locations.contains(frame){
+//            card.frame = CGRect(x: frame.origin.x - frame.height, y: frame.origin.y, width: frame.width, height: frame.height)
+//            trash = UIButton(frame: CGRect(x:frame.origin.x + frame.width - frame.height,
+//                                           y: frame.origin.y,
+//                                           width: frame.height,
+//                                           height: frame.height))
+//            trash?.addTarget(self, action: #selector(hideOverwatch), for: .touchDown)
+//            trash!.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
+//            self.view.addSubview(trash!)
+//        }
+        
+    }
+    
+    @objc func swipeLeft(on card:UIView){
+        let frame = card.frame
+        if !locations.contains(frame){
+            card.frame = CGRect(x: frame.origin.x - frame.height, y: frame.origin.y, width: frame.width, height: frame.height)
+            trash = UIButton(frame: CGRect(x:frame.origin.x + frame.width - frame.height,
+                                           y: frame.origin.y,
+                                           width: frame.height,
+                                           height: frame.height))
+            trash?.addTarget(self, action: #selector(hideOverwatch), for: .touchDown)
+            trash!.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
+            self.view.addSubview(trash!)
+        }
+    }
+    
+    @objc func swipeLeft(at index:Int){
+        let card = cards[index]
+        let frame = card.frame
+        if !locations.contains(frame){
+            card.frame = CGRect(x: frame.origin.x - frame.height, y: frame.origin.y, width: frame.width, height: frame.height)
+            trash = UIButton(frame: CGRect(x:frame.origin.x + frame.width - frame.height,
+                                           y: frame.origin.y,
+                                           width: frame.height,
+                                           height: frame.height))
+            trash?.addTarget(self, action: #selector(hideOverwatch), for: .touchDown)
+            trash!.setImage(#imageLiteral(resourceName: "trash"), for: .normal)
+            self.view.addSubview(trash!)
+        }
+    }
+    
+    @objc func removeCard(_ card:UIView){
+        card.isHidden = true
+        cards.remove(at: cards.index(of: card)!)
     }
     
     func swipeLeftOnOverwatch(){
@@ -109,11 +178,12 @@ class WishListViewController: UIViewController, UISearchBarDelegate {
         trash?.isHidden = true
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar){
-        print ("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-        if searchBar.text?.lowercased() == "minecraft"{
+    @IBAction func searchFinished(_ sender: UITextField) {
+        if sender.text?.lowercased() == "minecraft"{
             minecraftPC.isHidden = false
             updateCardData(minecraftPC)
+            roundedAndShadows()
+            sender.resignFirstResponder()
         }
     }
     
@@ -139,5 +209,6 @@ class WishListViewController: UIViewController, UISearchBarDelegate {
                 }
             }
         }
+        roundedAndShadows()
     }
 }
